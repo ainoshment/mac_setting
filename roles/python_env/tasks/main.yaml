@@ -1,0 +1,31 @@
+---
+- name: install pyenv with homebrew
+  homebrew:
+    name: pyenv
+    state: present
+
+- name: describe some settings in zshrc
+  shell: |
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc;
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc;
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc;
+  args:
+    creates: ~/.zshrc
+
+- name: reload zshrc
+  shell: source ~/.zshrc
+
+# ----------------------
+# This process isnt appropriate for ansible because it isnt idempotence
+- name: install latest pyenv
+  shell: pyenv install $(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.?*' | tail -1)
+
+- name: setting global pyenv
+  shell: pyenv global $(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.?*' | tail -1)
+# ----------------------
+
+- name: reload(rehash) after new python is installed
+  shell: pyenv rehash
+
+- name: reload zshrc again 
+  shell: source ~/.zshrc

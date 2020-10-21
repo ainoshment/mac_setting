@@ -1,0 +1,7 @@
+---
+mas_installed_apps:
+  - { id: 539883307, name: "LINE" }
+  - { id: 1429033973, name: "RunCat" }
+  # - { id: 803453959, name: "Slack" }
+  - { id: 497799835, name: "Xcode" }
+  - { id: 417375580, name: "BetterSnapTool" }

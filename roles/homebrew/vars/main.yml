@@ -1,0 +1,15 @@
+---
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+homebrew_installed_packages:
+  - git
+  - node
+  - nvm
+  - tree
+  - wget
+  - vim
+  - zsh
+  - mas
+  - circleci
+  - pyenv

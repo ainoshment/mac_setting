@@ -1,0 +1,17 @@
+---
+- name: homebrew update/upgrade
+  homebrew:
+    update_homebrew: true
+    upgrade_all: yes
+
+- name: homebrew tap
+  homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ homebrew_taps }}"
+
+- name: homebrew packages install
+  homebrew:
+    name: "{{ homebrew_installed_packages }}"
+    state: present
+  with_items: "{{ homebrew_installed_packages }}"
