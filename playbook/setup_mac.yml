@@ -8,11 +8,10 @@
   gather_facts: no
   # タスクの呼び出し
   roles:
-    # - homebrew
-    # - homebrew_cask
-    # - mas
-    # - osx
+    - homebrew
+    - homebrew_cask
+    - mas
+    - osx
     - python_env
     # - vscode
     # - nvm
-    # - xcode
